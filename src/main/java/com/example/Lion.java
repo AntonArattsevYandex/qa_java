@@ -3,10 +3,12 @@ package com.example;
 import java.util.List;
 
 public class Lion {
-
     boolean hasMane;
+    private final Feline feline;
 
-    public Lion(String sex) throws Exception {
+    // Новый конструктор с DI
+    public Lion(String sex, Feline feline) throws Exception {
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -16,7 +18,10 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
+    // Старый конструктор (оставлен для совместимости)
+    public Lion(String sex) throws Exception {
+        this(sex, new Feline());
+    }
 
     public int getKittens() {
         return feline.getKittens();
