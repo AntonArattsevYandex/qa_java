@@ -7,24 +7,22 @@ public class FelineTest {
     private final Feline feline = new Feline();
 
     @Test
-    public void eatMeat_ShouldReturnPredatorFoodList_WhenCalled() throws Exception {
-        List<String> expectedPredatorFood = List.of("Животные", "Птицы", "Рыба");
-        assertEquals(expectedPredatorFood, feline.eatMeat());
+    public void eatMeatShouldReturnPredatorFood() throws Exception {
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
     }
 
     @Test
-    public void getFamily_ShouldReturnFelidae_WhenCalled() {
+    public void getFamilyShouldReturnFelidae() {
         assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
-    public void getKittens_ShouldReturnOneKitten_ByDefault() {
+    public void getKittensShouldReturnOneByDefault() {
         assertEquals(1, feline.getKittens());
     }
 
     @Test
-    public void getKittens_ShouldReturnSpecifiedCount_WhenParameterProvided() {
-        int expectedKittenCount = 5;
-        assertEquals(expectedKittenCount, feline.getKittens(expectedKittenCount));
+    public void getKittensShouldReturnSpecifiedCount() {
+        assertEquals(5, feline.getKittens(5));
     }
 }

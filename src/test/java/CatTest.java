@@ -14,18 +14,16 @@ public class CatTest {
     private Feline mockFeline;
 
     @Test
-    public void getSound_ShouldReturnMeow_WhenCalled() {
+    public void getSoundShouldReturnMeow() {
         Cat cat = new Cat(mockFeline);
-        assertEquals("Ожидается звук 'Мяу'", "Мяу", cat.getSound());
+        assertEquals("Мяу", cat.getSound());
     }
 
     @Test
-    public void getFood_ShouldDelegateToFeline_WhenCalled() throws Exception {
+    public void getFoodShouldDelegateToFeline() throws Exception {
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         when(mockFeline.eatMeat()).thenReturn(expectedFood);
-
-        Cat cat = new Cat(mockFeline);
-        assertEquals("Рацион должен соответствовать хищнику", expectedFood, cat.getFood());
-        verify(mockFeline, times(1)).eatMeat();
+        assertEquals(expectedFood, new Cat(mockFeline).getFood());
+        verify(mockFeline).eatMeat();
     }
 }

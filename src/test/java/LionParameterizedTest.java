@@ -16,8 +16,8 @@ public class LionParameterizedTest {
         this.expectedHasMane = expectedHasMane;
     }
 
-    @Parameterized.Parameters(name = "Для пола {0} наличие гривы должно быть {1}")
-    public static Collection<Object[]> testCases() {
+    @Parameterized.Parameters(name = "Пол: {0}, Грива: {1}")
+    public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Самец", true},
                 {"Самка", false}
@@ -25,7 +25,7 @@ public class LionParameterizedTest {
     }
 
     @Test
-    public void doesHaveMane_ShouldMatchExpected_ForGivenSex() throws Exception {
+    public void doesHaveManeShouldMatchExpected() throws Exception {
         Lion lion = new Lion(sex);
         assertEquals(expectedHasMane, lion.doesHaveMane());
     }
