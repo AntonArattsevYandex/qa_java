@@ -3,12 +3,12 @@ package com.example;
 import java.util.List;
 
 public class Lion {
+    private final Predator predator;
     boolean hasMane;
-    private final Feline feline;
 
-    // Новый конструктор с DI
-    public Lion(String sex, Feline feline) throws Exception {
-        this.feline = feline;
+    // Единственный конструктор
+    public Lion(String sex, Predator predator) throws Exception {
+        this.predator = predator;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -18,13 +18,8 @@ public class Lion {
         }
     }
 
-    // Старый конструктор (оставлен для совместимости)
-    public Lion(String sex) throws Exception {
-        this(sex, new Feline());
-    }
-
     public int getKittens() {
-        return feline.getKittens();
+        return predator.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -32,6 +27,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return feline.getFood("Хищник");
+        return predator.eatMeat();
     }
 }

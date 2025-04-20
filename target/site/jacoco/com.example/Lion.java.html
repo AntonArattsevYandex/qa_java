@@ -3,12 +3,12 @@
 import java.util.List;
 
 public class Lion {
+    private final Predator predator;
     boolean hasMane;
-    private final Feline feline;
 
-    // Новый конструктор с DI
-<span class="fc" id="L10">    public Lion(String sex, Feline feline) throws Exception {</span>
-<span class="fc" id="L11">        this.feline = feline;</span>
+    // Единственный конструктор
+<span class="fc" id="L10">    public Lion(String sex, Predator predator) throws Exception {</span>
+<span class="fc" id="L11">        this.predator = predator;</span>
 <span class="fc bfc" id="L12" title="All 2 branches covered.">        if (&quot;Самец&quot;.equals(sex)) {</span>
 <span class="fc" id="L13">            hasMane = true;</span>
 <span class="fc bfc" id="L14" title="All 2 branches covered.">        } else if (&quot;Самка&quot;.equals(sex)) {</span>
@@ -18,21 +18,16 @@ public class Lion {
         }
 <span class="fc" id="L19">    }</span>
 
-    // Старый конструктор (оставлен для совместимости)
-    public Lion(String sex) throws Exception {
-<span class="fc" id="L23">        this(sex, new Feline());</span>
-<span class="fc" id="L24">    }</span>
-
     public int getKittens() {
-<span class="fc" id="L27">        return feline.getKittens();</span>
+<span class="fc" id="L22">        return predator.getKittens();</span>
     }
 
     public boolean doesHaveMane() {
-<span class="fc" id="L31">        return hasMane;</span>
+<span class="fc" id="L26">        return hasMane;</span>
     }
 
     public List&lt;String&gt; getFood() throws Exception {
-<span class="fc" id="L35">        return feline.getFood(&quot;Хищник&quot;);</span>
+<span class="fc" id="L30">        return predator.eatMeat();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
